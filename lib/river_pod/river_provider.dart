@@ -20,12 +20,13 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
 class RiverProviderState<T extends RiverNotifier<G>, G>
     extends ConsumerState<RiverProvider> {
   @protected StateNotifierProvider<T, G>? riverProvider;
-  @protected List<Object>? repositories;
+  @protected List<Provider>? repositories;
 
   @override
   void initState() {
     if (widget.setRepository()?.isNotEmpty == true) {
-      repositories = widget.setRepository();
+      final list = widget.setRepository()!;
+      repositories = list.map((Object e) => Provider((ref) => e)).toList();
     }
     riverProvider =
         StateNotifierProvider<T, G>((r) => widget.createProvider(repositories) as T);
