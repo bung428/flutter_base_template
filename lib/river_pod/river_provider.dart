@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_base_template/river_pod/river_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,6 +41,5 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
     return const SizedBox.shrink();
   }
 
-  Widget _buildProviderWidget(BuildContext context, Widget widget)
-  => widget;
+  Widget _buildProviderWidget(BuildContext context, Widget widget) => widget;
 }
