@@ -5,5 +5,7 @@ Future<void> showExceptionBuilder(Object e) async {
   if (e is DioException) {
     print('exception type: ${e.type} : msg : ${e.message}');
     return appErrorDialog(null, e.toString());
+  } else {
+    return appErrorDialog(null, e.toString());
   }
 }
