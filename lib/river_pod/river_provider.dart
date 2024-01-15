@@ -7,9 +7,7 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
     extends ConsumerStatefulWidget {
   const RiverProvider({super.key});
 
-  T createProvider(List<Object>? repos);
-
-  List<Object>? setRepository();
+  T createProvider(WidgetRef ref);
 
   Widget build(BuildContext context, G provider, T notifier);
 
@@ -20,16 +18,11 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
 class RiverProviderState<T extends RiverNotifier<G>, G>
     extends ConsumerState<RiverProvider> {
   @protected StateNotifierProvider<T, G>? riverProvider;
-  @protected List<Provider>? repositories;
 
   @override
   void initState() {
-    if (widget.setRepository()?.isNotEmpty == true) {
-      final list = widget.setRepository()!;
-      repositories = list.map((Object e) => Provider((ref) => e)).toList();
-    }
     riverProvider =
-        StateNotifierProvider<T, G>((r) => widget.createProvider(repositories) as T);
+        StateNotifierProvider<T, G>((r) => widget.createProvider(ref) as T);
     super.initState();
   }
 
