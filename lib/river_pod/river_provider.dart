@@ -7,7 +7,7 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
     extends ConsumerStatefulWidget {
   const RiverProvider({super.key});
 
-  T createProvider();
+  T createProvider(WidgetRef ref);
 
   Widget build(BuildContext context, G provider, T notifier);
 
@@ -22,7 +22,7 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   @override
   void initState() {
     riverProvider =
-        StateNotifierProvider<T, G>((ref) => widget.createProvider() as T);
+        StateNotifierProvider<T, G>((r) => widget.createProvider(ref) as T);
     super.initState();
   }
 
