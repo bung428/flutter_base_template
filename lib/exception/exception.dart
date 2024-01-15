@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_getx_base/widget/dialog/app_dialog.dart';
+import 'package:flutter_base_template/widget/dialog/app_dialog.dart';
 
 Future<void> showExceptionBuilder(Object e) async {
   if (e is DioException) {

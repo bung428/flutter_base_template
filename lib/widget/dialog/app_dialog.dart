@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_getx_base/edge_insets.dart';
-import 'package:flutter_getx_base/widget/dialog/app_bottom_sheet.dart';
+import 'package:flutter_base_template/edge_insets.dart';
+import 'package:flutter_base_template/widget/dialog/app_bottom_sheet.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-name: flutter_getx_base
+name: flutter_base_template
 description: "A new Flutter project."
 version: 0.0.1
 homepage:
@@ -11,10 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
+# state_management
   get: ^4.6.6
+  flutter_riverpod:
 
+# network
   dio: ^5.3.0
 
+# widget
   gap: ^3.0.1
 
 dev_dependencies:
