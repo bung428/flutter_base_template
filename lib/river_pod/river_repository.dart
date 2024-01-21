@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class RiverRepository {
+  RiverRepository() {
+    init();
+  }
+
   void init() {}
 
   RiverRepository createRiverRepo();
