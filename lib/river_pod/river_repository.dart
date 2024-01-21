@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class RiverRepository {
+  void init() {}
+
   RiverRepository createRiverRepo();
   Provider<RiverRepository> _setRiverRepoProvider() {
     return Provider((ref) => createRiverRepo());
