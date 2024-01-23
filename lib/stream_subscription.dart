@@ -29,7 +29,7 @@ mixin AppStreamSubscription {
           if (onError != null) {
             onError(e);
           } else {
-            showExceptionBuilder(e);
+            // showExceptionBuilder(e);
             return e;
           }
           if (onDone != null) onDone(false);
