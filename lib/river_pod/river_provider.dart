@@ -17,12 +17,18 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
 
 class RiverProviderState<T extends RiverNotifier<G>, G>
     extends ConsumerState<RiverProvider> {
+  @protected T? notifier;
   @protected StateNotifierProvider<T, G>? riverProvider;
 
   @override
   void initState() {
-    riverProvider =
-        StateNotifierProvider<T, G>((r) => widget.createProvider(ref) as T);
+    notifier = widget.createProvider(ref) as T;
+    if (notifier != null) {
+      notifier?.setOnBuildContext(() => context);
+      riverProvider =
+          StateNotifierProvider<T, G>((r) => notifier!);
+    }
+
     super.initState();
   }
 
@@ -30,6 +36,11 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   void dispose() {
     if (riverProvider != null && riverProvider is AppStreamSubscription) {
       (riverProvider as AppStreamSubscription).clearSubscription();
+    }
+    if (notifier != null) {
+      notifier?.dispose();
+      notifier?.setOnBuildContext(null);
+      notifier = null;
     }
     super.dispose();
   }
