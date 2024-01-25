@@ -22,14 +22,12 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
 
   @override
   void initState() {
+    super.initState();
     notifier = widget.createProvider(ref) as T;
     if (notifier != null) {
+      riverProvider = StateNotifierProvider<T, G>((r) => notifier!);
       notifier?.setOnBuildContext(() => context);
-      riverProvider =
-          StateNotifierProvider<T, G>((r) => notifier!);
     }
-
-    super.initState();
   }
 
   @override
