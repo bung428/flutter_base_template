@@ -30,14 +30,6 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   }
 
   @override
-  void didChangeDependencies() {
-    if (notifier != null && mounted) {
-      notifier?.setOnBuildContext(() => context);
-    }
-    super.didChangeDependencies();
-  }
-
-  @override
   void dispose() {
     if (riverProvider != null && riverProvider is AppStreamSubscription) {
       (riverProvider as AppStreamSubscription).clearSubscription();
@@ -54,6 +46,10 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   Widget build(BuildContext context) {
     final riverProvider = this.riverProvider;
     if (riverProvider != null) {
+      if (this.notifier != null && mounted) {
+        this.notifier?.setOnBuildContext(() => context);
+      }
+
       final provider = ref.watch(riverProvider);
       final notifier = ref.watch(riverProvider.notifier);
 
