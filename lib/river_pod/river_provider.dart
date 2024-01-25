@@ -36,7 +36,6 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
     }
     if (notifier != null) {
       notifier?.dispose();
-      notifier?.setOnBuildContext(null);
       notifier = null;
     }
     super.dispose();
@@ -46,10 +45,6 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   Widget build(BuildContext context) {
     final riverProvider = this.riverProvider;
     if (riverProvider != null) {
-      if (this.notifier != null && mounted) {
-        this.notifier?.setOnBuildContext(() => context);
-      }
-
       final provider = ref.watch(riverProvider);
       final notifier = ref.watch(riverProvider.notifier);
 
