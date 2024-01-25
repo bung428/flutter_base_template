@@ -17,6 +17,7 @@ abstract class RiverProvider<T extends RiverNotifier<G>, G>
 
 class RiverProviderState<T extends RiverNotifier<G>, G>
     extends ConsumerState<RiverProvider> {
+  @protected T? notifier;
   @protected StateNotifierProvider<T, G>? riverProvider;
 
   @override
@@ -31,7 +32,7 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
     if (riverProvider != null && riverProvider is AppStreamSubscription) {
       (riverProvider as AppStreamSubscription).clearSubscription();
     }
-    // widget.createProvider(ref).dispose();
+    notifier?.dispose();
     super.dispose();
   }
 
@@ -41,6 +42,9 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
     if (riverProvider != null) {
       final provider = ref.watch(riverProvider);
       final notifier = ref.watch(riverProvider.notifier);
+
+      this.notifier = notifier;
+      this.notifier?.setOnBuildContext(() => context);
 
       return Stack(
         fit: StackFit.expand,
