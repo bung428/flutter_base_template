@@ -26,8 +26,15 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
     notifier = widget.createProvider(ref) as T;
     if (notifier != null) {
       riverProvider = StateNotifierProvider<T, G>((r) => notifier!);
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (notifier != null && mounted) {
       notifier?.setOnBuildContext(() => context);
     }
+    super.didChangeDependencies();
   }
 
   @override
