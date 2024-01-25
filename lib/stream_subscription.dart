@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_base_template/exception/exception.dart';
 import 'package:rxdart/rxdart.dart';
 
 mixin AppStreamSubscription {
