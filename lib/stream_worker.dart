@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_template/exception/exception.dart';
 import 'package:get/get.dart';
 
 enum WorkerState {
@@ -67,7 +66,7 @@ mixin StreamWorker on GetxController {
 
         final context = Get.context;
         if (context != null) {
-          showExceptionBuilder(error);
+          // showExceptionBuilder(error);
         }
       } catch (_) {}
     } finally {
