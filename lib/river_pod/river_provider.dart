@@ -24,7 +24,6 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   void initState() {
     super.initState();
     riverProvider = StateNotifierProvider<T, G>((r) => widget.createProvider(ref) as T);
-    // widget.createProvider(ref).setOnBuildContext(() => context);
   }
 
   @override
@@ -45,6 +44,7 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
 
       this.notifier = notifier;
       this.notifier?.setOnBuildContext(() => context);
+      notifier.onInit();
 
       return Stack(
         fit: StackFit.expand,

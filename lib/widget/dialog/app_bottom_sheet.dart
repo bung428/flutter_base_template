@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_template/edge_insets.dart';
 
 Future<dynamic> showAppBottomSheet({
   required BuildContext context,
@@ -18,8 +19,10 @@ Future<dynamic> showAppBottomSheet({
       builder: (context) {
         return SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsetsApp(
+              horizontal: 12,
+              bottom: MediaQuery.of(context).viewInsets.bottom
+            ),
             child: BottomSheetWidget(
               title: title?.call(context),
               content: content?.call(context),
