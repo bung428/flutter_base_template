@@ -20,5 +20,8 @@ abstract class RiverNotifier<T> extends StateNotifier<T> {
   }
 
   @override
-  void dispose();
+  void dispose() {
+    _onBuildContext = null;
+    super.dispose();
+  }
 }

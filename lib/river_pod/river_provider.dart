@@ -20,6 +20,8 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
   @protected T? notifier;
   @protected StateNotifierProvider<T, G>? riverProvider;
 
+  bool init = false;
+
   @override
   void initState() {
     super.initState();
@@ -44,7 +46,10 @@ class RiverProviderState<T extends RiverNotifier<G>, G>
 
       this.notifier = notifier;
       this.notifier?.setOnBuildContext(() => context);
-      notifier.onInit();
+      if (!init) {
+        notifier.onInit();
+        init = true;
+      }
 
       return Stack(
         fit: StackFit.expand,
