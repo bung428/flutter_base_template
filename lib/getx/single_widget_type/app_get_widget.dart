@@ -3,28 +3,23 @@ import 'package:flutter_base_template/stream_worker.dart';
 import 'package:flutter_base_template/widget/keyboard_unfocus_widget.dart';
 import 'package:get/get.dart';
 
-typedef GetPageBuilder<T extends GetxController> = Widget Function(
-    BuildContext context, T controller);
-
-class GetXPageBuilder<T extends GetxController> extends StatelessWidget {
-  final T? init;
+abstract class AppSingleGetWidget<T extends GetxController> extends StatelessWidget {
   final bool outsideUnFocus;
-  final GetPageBuilder<T> builder;
 
-  const GetXPageBuilder({
+  const AppSingleGetWidget({
     super.key,
-    this.init,
     this.outsideUnFocus = false,
-    required this.builder,
   });
+
+  T? init();
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<T>(
-        init: init,
-        autoRemove: init != null,
+        init: init(),
+        autoRemove: init() != null,
         builder: (T controller) {
-          var child = builder(context, controller);
+          var child = appWidgetBuilder(context, controller);
           if (outsideUnFocus) {
             child = KeyboardUnFocus(child: child);
           }
@@ -40,4 +35,6 @@ class GetXPageBuilder<T extends GetxController> extends StatelessWidget {
         }
     );
   }
+
+  Widget appWidgetBuilder(BuildContext context, T controller);
 }
