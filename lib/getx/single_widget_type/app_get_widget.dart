@@ -4,14 +4,11 @@ import 'package:flutter_base_template/widget/keyboard_unfocus_widget.dart';
 import 'package:get/get.dart';
 
 abstract class AppSingleGetWidget<T extends GetxController> extends StatelessWidget {
-  final bool outsideUnFocus;
-
-  const AppSingleGetWidget({
-    super.key,
-    this.outsideUnFocus = false,
-  });
+  const AppSingleGetWidget({super.key});
 
   T? init();
+
+  bool outsideUnFocus() => false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,8 @@ abstract class AppSingleGetWidget<T extends GetxController> extends StatelessWid
         autoRemove: init() != null,
         builder: (T controller) {
           var child = appWidgetBuilder(context, controller);
-          if (outsideUnFocus) {
+          final unFocus = outsideUnFocus();
+          if (unFocus) {
             child = KeyboardUnFocus(child: child);
           }
 
