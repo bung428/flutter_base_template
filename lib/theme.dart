@@ -302,40 +302,40 @@ extension AppButtonStyleExt on ThemeData {
 
   ButtonStyle getOutlinedBtnStyle(AppButtonStyle style) => switch(style) {
     AppButtonStyle.primary => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onPrimary,
+        foregroundColor: colorScheme.primary,
         side: BorderSide(color: colorScheme.primary)
     ),
     AppButtonStyle.primaryContainer => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onPrimaryContainer,
+        foregroundColor: colorScheme.primaryContainer,
         side: BorderSide(color: colorScheme.primaryContainer)
     ),
     AppButtonStyle.secondary => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onSecondary,
+        foregroundColor: colorScheme.secondary,
         side: BorderSide(color: colorScheme.secondary)
     ),
     AppButtonStyle.secondaryContainer => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onSecondaryContainer,
+        foregroundColor: colorScheme.secondaryContainer,
         side: BorderSide(color: colorScheme.secondaryContainer)
     ),
-    AppButtonStyle.tertiary => throw OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onTertiary,
+    AppButtonStyle.tertiary => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.tertiary,
         side: BorderSide(color: colorScheme.tertiary)
     ),
     AppButtonStyle.tertiaryContainer => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onTertiaryContainer,
+        foregroundColor: colorScheme.tertiaryContainer,
         side: BorderSide(color: colorScheme.tertiaryContainer)
     ),
     AppButtonStyle.error => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onError,
+        foregroundColor: colorScheme.error,
         side: BorderSide(color: colorScheme.error)
     ),
     AppButtonStyle.errorContainer => OutlinedButton.styleFrom(
-        foregroundColor: colorScheme.onErrorContainer,
+        foregroundColor: colorScheme.errorContainer,
         side: BorderSide(color: colorScheme.errorContainer)
     ),
     AppButtonStyle.outline => OutlinedButton.styleFrom(
-        foregroundColor: hintColor,
-        side: BorderSide(color: colorScheme.onSurface)
+        foregroundColor: colorScheme.outline,
+        side: BorderSide(color: colorScheme.outline)
     ),
   };
 }
