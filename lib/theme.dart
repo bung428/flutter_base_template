@@ -295,7 +295,7 @@ extension AppButtonStyleExt on ThemeData {
       backgroundColor: colorScheme.errorContainer,
     ),
     AppButtonStyle.outline => ElevatedButton.styleFrom(
-      foregroundColor: hintColor,
+      foregroundColor: scaffoldBackgroundColor,
       backgroundColor: colorScheme.outline,
     ),
   };
