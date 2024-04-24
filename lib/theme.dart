@@ -1,136 +1,5 @@
 import 'package:flutter/material.dart';
 
-ThemeData getTheme([String? fontFamily = 'SCDream']) {
-  const colorScheme = lightColorScheme;
-  final theme = ThemeData(
-    useMaterial3: true,
-    colorScheme: colorScheme,
-    fontFamily: fontFamily,
-    hintColor: const Color(0xFF999999),
-  );
-  return theme.copyWith(
-      appBarTheme: theme.appBarTheme.copyWith(
-        color: theme.scaffoldBackgroundColor,
-        // systemOverlayStyle: DynamicSystemUiOverlayStyle.dark,
-        // backgroundColor: theme.scaffoldBackgroundColor,
-        // surfaceTintColor: Colors.transparent,
-        // elevation: 0,
-        centerTitle: true,
-        titleTextStyle: theme.textColor.semiBold(16)
-      ),
-      cardTheme: theme.cardTheme.copyWith(
-        color: theme.scaffoldBackgroundColor,
-        elevation: 8,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-      dialogBackgroundColor: theme.scaffoldBackgroundColor,
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            visualDensity: VisualDensity.compact,
-            padding: const EdgeInsets.all(4),
-            foregroundColor: theme.colorScheme.onSurface,
-            // textStyle: theme.textColor.normal(14),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4))),
-          )
-      ),
-      dividerTheme:
-      DividerThemeData(color: theme.dividerColor, space: 1, thickness: 1),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            visualDensity: VisualDensity.compact,
-            foregroundColor: theme.colorScheme.onPrimary,
-            backgroundColor: theme.colorScheme.primary,
-            disabledBackgroundColor: theme.dividerColor,
-            disabledForegroundColor: theme.colorScheme.onPrimary,
-            elevation: 0,
-            textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          )),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            visualDensity: VisualDensity.compact,
-            textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-          )),
-      inputDecorationTheme: theme.inputDecorationTheme.copyWith(
-        labelStyle:
-        theme.textTheme.bodyMedium?.copyWith(color: theme.hintColor),
-        helperStyle:
-        theme.textTheme.bodySmall?.copyWith(color: theme.hintColor),
-        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
-        prefixIconColor: theme.hintColor,
-        suffixIconColor: theme.hintColor,
-      ),
-      checkboxTheme: theme.checkboxTheme.copyWith(
-          side: BorderSide(width: 1, color: theme.colorScheme.outline)),
-      dialogTheme: theme.dialogTheme.copyWith(
-        backgroundColor: theme.scaffoldBackgroundColor,
-        surfaceTintColor: theme.scaffoldBackgroundColor,
-        elevation: 8,
-        // titleTextStyle: theme.textColor.bold(20),
-        // contentTextStyle: theme.hintColor.normal(16),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-      ),
-      bottomSheetTheme: theme.bottomSheetTheme.copyWith(
-          backgroundColor: theme.scaffoldBackgroundColor,
-          surfaceTintColor: theme.scaffoldBackgroundColor,
-          elevation: 8,
-          clipBehavior: Clip.hardEdge,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-          )),
-      extensions: [
-
-      ]);
-}
-
-const lightColorScheme = ColorScheme(
-  brightness: Brightness.light,
-  primary: Color(0xFF14C8AA),
-  onPrimary: Color(0xFFFFFFFF),
-  primaryContainer: Color(0xFFE1F1FF),
-  onPrimaryContainer: Color(0xFF007AFF),
-  secondary: Color(0xFF00B3CC),
-  onSecondary: Color(0xFFFFFFFF),
-  secondaryContainer: Color(0xFFE7FAEE),
-  onSecondaryContainer: Color(0xFF34C759),
-  tertiary: Color(0xFFFF9500),
-  onTertiary: Color(0xFFFFFFFF),
-  tertiaryContainer: Color(0xFFFFF4E3),
-  onTertiaryContainer: Color(0xFFFF9500),
-  error: Color(0xFFFF3B30),
-  onError: Color(0xFFFFFFFF),
-  errorContainer: Color(0xFFFFEAEA),
-  onErrorContainer: Color(0xFFFF3B30),
-  outline: Color(0xFFEEEEEE),
-  background: Color(0xFFFFFFFF),
-  onBackground: Color(0xFF111111),
-  surface: Color(0xFFFCF8FF),
-  onSurface: Color(0xFF000000),
-  // Text Color
-  surfaceVariant: Color(0xFFE5E1EC),
-  onSurfaceVariant: Color(0xFF47464F),
-  inverseSurface: Color(0xFF313036),
-  onInverseSurface: Color(0xFFF3EFF7),
-  inversePrimary: Color(0xFFC5C0FF),
-  shadow: Color(0xFF000000),
-  surfaceTint: Color(0xFF5C5698),
-  outlineVariant: Color(0xFFC8C5D0),
-  scrim: Color(0xFF000000),
-);
-
 extension TextStyleByTheme on ThemeData {
   Color get textColor => colorScheme.onSurface;
 
@@ -143,7 +12,7 @@ extension TextStyleByTheme on ThemeData {
   Color get errorTextColor => colorScheme.onError;
 }
 
-extension DynamicTextStyleByColor on Color {
+extension AppTextStyleByColor on Color {
   TextStyle w100(
       double fontSize, {
         FontStyle? fontStyle,
@@ -379,31 +248,94 @@ extension DynamicTextStyleByColor on Color {
   }
 }
 
-extension AppButtonStyle on ButtonThemeData {
-  ButtonStyle get disableStyle => ButtonStyle(
-      foregroundColor: const MaterialStatePropertyAll(Color(0xff868e96)),
-      backgroundColor: const MaterialStatePropertyAll(Color(0xFFf1f3f5)),
-      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ))
-  );
+enum AppButtonStyle {
+  primary,
+  primaryContainer,
+  secondary,
+  secondaryContainer,
+  tertiary,
+  tertiaryContainer,
+  error,
+  errorContainer,
+  outline,
+}
 
-  ButtonStyle get transparentStyle => ElevatedButton.styleFrom(
-    backgroundColor: Colors.transparent,
-    shadowColor: Colors.transparent,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  );
+extension AppButtonStyleExt on ThemeData {
+  ButtonStyle getElevatedBtnStyle(AppButtonStyle style) => switch(style) {
+    AppButtonStyle.primary => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onPrimary,
+      backgroundColor: colorScheme.primary,
+    ),
+    AppButtonStyle.primaryContainer => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onPrimaryContainer,
+      backgroundColor: colorScheme.primaryContainer,
+    ),
+    AppButtonStyle.secondary => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onSecondary,
+      backgroundColor: colorScheme.secondary,
+    ),
+    AppButtonStyle.secondaryContainer => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onSecondaryContainer,
+      backgroundColor: colorScheme.secondaryContainer,
+    ),
+    AppButtonStyle.tertiary => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onTertiary,
+      backgroundColor: colorScheme.tertiary,
+    ),
+    AppButtonStyle.tertiaryContainer => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onTertiaryContainer,
+      backgroundColor: colorScheme.tertiaryContainer,
+    ),
+    AppButtonStyle.error => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onError,
+      backgroundColor: colorScheme.error,
+    ),
+    AppButtonStyle.errorContainer => ElevatedButton.styleFrom(
+      foregroundColor: colorScheme.onErrorContainer,
+      backgroundColor: colorScheme.errorContainer,
+    ),
+    AppButtonStyle.outline => ElevatedButton.styleFrom(
+      foregroundColor: hintColor,
+      backgroundColor: colorScheme.outline,
+    ),
+  };
 
-  ButtonStyle get cancelStyle => ButtonStyle(
-      foregroundColor: const MaterialStatePropertyAll(Colors.black),
-      backgroundColor:
-      const MaterialStatePropertyAll(Color(0xFFFFFFFF)),
-      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-          side: const BorderSide(
-              color: Color(0xffe9ecef),
-              width: 1
-          )
-      ))
-  );
+  ButtonStyle getOutlinedBtnStyle(AppButtonStyle style) => switch(style) {
+    AppButtonStyle.primary => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onPrimary,
+        side: BorderSide(color: colorScheme.primary)
+    ),
+    AppButtonStyle.primaryContainer => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onPrimaryContainer,
+        side: BorderSide(color: colorScheme.primaryContainer)
+    ),
+    AppButtonStyle.secondary => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onSecondary,
+        side: BorderSide(color: colorScheme.secondary)
+    ),
+    AppButtonStyle.secondaryContainer => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onSecondaryContainer,
+        side: BorderSide(color: colorScheme.secondaryContainer)
+    ),
+    AppButtonStyle.tertiary => throw OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onTertiary,
+        side: BorderSide(color: colorScheme.tertiary)
+    ),
+    AppButtonStyle.tertiaryContainer => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onTertiaryContainer,
+        side: BorderSide(color: colorScheme.tertiaryContainer)
+    ),
+    AppButtonStyle.error => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onError,
+        side: BorderSide(color: colorScheme.error)
+    ),
+    AppButtonStyle.errorContainer => OutlinedButton.styleFrom(
+        foregroundColor: colorScheme.onErrorContainer,
+        side: BorderSide(color: colorScheme.errorContainer)
+    ),
+    AppButtonStyle.outline => OutlinedButton.styleFrom(
+        foregroundColor: hintColor,
+        side: BorderSide(color: colorScheme.onSurface)
+    ),
+  };
 }
